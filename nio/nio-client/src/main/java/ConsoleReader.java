@@ -22,7 +22,11 @@ public class ConsoleReader implements Runnable {
             String message = in.next();
             try {
                 System.out.println(4);
-                socket.getChannel().write(ByteBuffer.wrap(message.getBytes()));
+                ByteBuffer buffer = ByteBuffer.wrap(message.getBytes());
+                System.out.println(buffer.toString());
+                //buffer.flip();
+                System.out.println(buffer.toString());
+                socket.getChannel().write(buffer);
                 System.out.println(5);
             } catch (IOException e) {
                 e.printStackTrace();
